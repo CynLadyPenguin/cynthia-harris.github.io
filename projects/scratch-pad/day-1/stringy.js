@@ -14,10 +14,13 @@
  */
 function length(string) {
     // YOUR CODE BELOW HERE //
-    
-
-
-    // YOUR CODE ABOVE HERE //
+  /* I: function should input a string
+  O: output should be the length of the inputed string
+  C: / E: /
+  */
+ //return str.length
+ return string.length;  
+// YOUR CODE ABOVE HERE //
 }
 
 /**
@@ -25,10 +28,10 @@ function length(string) {
  */
 function toLowerCase(string) {
     // YOUR CODE BELOW HERE //
-
-
-
-    // YOUR CODE ABOVE HERE //
+/*I: input a string O: return lowercase string C: / E: / */
+//return string.toLowerCase
+return string.toLowerCase();
+   // YOUR CODE ABOVE HERE //
 }
 
 /**
@@ -36,9 +39,9 @@ function toLowerCase(string) {
  */
 function toUpperCase(string) {
     // YOUR CODE BELOW HERE //
-
-
-
+/*I: input a string with lowercases O: output should be a string with lowercase C: / E: / */
+//return string.toUpperCase();
+return string.toUpperCase();
     // YOUR CODE ABOVE HERE //
 }
 
@@ -57,9 +60,10 @@ function toUpperCase(string) {
  */
 function toDashCase(string) {
     // YOUR CODE BELOW HERE //
-
-
-
+/* I: input a string O: output a string that has been dash-cased C: / E: / */
+//let string = "";
+let str = " ";
+str2 = str.replace(/[" "]/g, "-")
     // YOUR CODE ABOVE HERE //
 }
 
@@ -75,12 +79,21 @@ function toDashCase(string) {
  * TIP: How can you use Array access to your advantage here? How can you
  *      ensure uppercase and lowercase can be compared equally?
  */
-function beginsWith(string, char) {
+ function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
-    
-
-    // YOUR CODE ABOVE HERE //
+/* I: function should input a string and a single character to be compared using boolean values true or false possibly using comparison operators and .startsWith
+* O: function should output a boolean value true or false that ignores case sensitivity */
+//set if value for uppercase matching
+if (string.toUpperCase().startsWith(char.toUpperCase())) {
+    return true;
+}else if (string.toLowerCase().startsWith(char.toLowerCase())) {
+    return true;
+    //set return for all other conditions
+}else {
+    return false;
+}
+  console.log(beginsWith("Street", "s"));
+ // YOUR CODE ABOVE HERE //
 }
 
 /**
