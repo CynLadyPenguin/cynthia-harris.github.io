@@ -17,7 +17,13 @@
  */
 function print(value) {
   // YOUR CODE BELOW HERE //
-  
+  /*I: function takes in any value
+  *O: function should log the input value to the console
+  *C
+  *E
+  */
+ //use console.log to print input to console
+  console.log(value);
   
   
   // YOUR CODE ABOVE HERE //

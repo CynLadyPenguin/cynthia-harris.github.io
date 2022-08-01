@@ -17,7 +17,7 @@
 9) select bootcamp session
 10) select project
 
-## How to 
+## How to run os test and os submit
 in terminal, type => os {action} either submit or test
 submit will submit your work to change dot color in greenlight
 test will show how many parts of an assignment you are passing
