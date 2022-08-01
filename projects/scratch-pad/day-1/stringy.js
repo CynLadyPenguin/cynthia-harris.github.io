@@ -60,10 +60,12 @@ return string.toUpperCase();
  */
 function toDashCase(string) {
     // YOUR CODE BELOW HERE //
-/* I: input a string O: output a string that has been dash-cased C: / E: / */
-//let string = "";
+/* I: input a string and use .replace to  O: output a string that has been dash-cased and lowercased C: / E: / */
+var replaceWithDash = " ";
+//return string.toLowerCase.replace(/[" "]/gi, "-")
+return string.replace(/\s+/g, '-').toLowerCase();
 
-return string.prototype.replace(/[" "]/g, "-")
+
     // YOUR CODE ABOVE HERE //
 }
 
@@ -212,7 +214,14 @@ if (stringOne < stringTwo) {
  */
 function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+//gonna reverse the order from the previous example
+if (stringOne > stringTwo) {
+    return 1;
+} else if (stringOne < stringTwo) {
+    return -1;
+}else {
+    return 0;
+}
 
 
 
