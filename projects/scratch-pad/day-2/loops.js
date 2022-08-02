@@ -121,9 +121,6 @@ function getObjectLength(object) {
 function printObjectValuesInReverse(object) {
   // YOUR CODE BELOW HERE //
 
-
-
-  
   
   // YOUR CODE ABOVE HERE //
 }
