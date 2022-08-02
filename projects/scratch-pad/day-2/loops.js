@@ -38,10 +38,13 @@ for (var i = array.length - 1; i >= 0; i--) {
 function getObjectKeys(object) {
   // YOUR CODE BELOW HERE //
 /* I: input is the object O: output is specifically the object's keys (properties) in an array */
+//set variable with value of empty array
+var arr = [];
 //for in loop with conditions   
-  for (var keys in object) {
-    console.log(keys);
-  }
+  for (var key in object) {
+    arr.push(key);
+    }
+    return arr;
    // YOUR CODE ABOVE HERE //
 }
 
@@ -51,10 +54,12 @@ function getObjectKeys(object) {
  */
 function printObjectKeys(object) {
   // YOUR CODE BELOW HERE //
+  //for in loop 
+  for (var key in object){
+  //print key properties to the console
+  console.log(key);
   
-  
-  
-  
+  } 
   // YOUR CODE ABOVE HERE //
 }
 
@@ -63,10 +68,16 @@ function printObjectKeys(object) {
  */
 function getObjectValues(object) {
   // YOUR CODE BELOW HERE //
-  
-  
-  
-  
+  //variable for array
+  var arr = [];
+  //for in loop to loop over object keys in 
+  for (var key in object) {
+    //push values into the array
+    arr.push(object[key]);
+    //return array with values inside outside of the for in loop function
+    
+  }
+  return arr; 
   // YOUR CODE ABOVE HERE //
 }
 
@@ -76,11 +87,12 @@ function getObjectValues(object) {
  */
 function printObjectValues(object) {
   // YOUR CODE BELOW HERE //
-  
-  
-  
-  
-  // YOUR CODE ABOVE HERE //
+//for in loop for object
+for (var key in object) {
+  //console.log the key values
+  console.log(object[key]);
+}  
+ // YOUR CODE ABOVE HERE //
 }
 
 /** 
@@ -88,8 +100,15 @@ function printObjectValues(object) {
  */
 function getObjectLength(object) {
   // YOUR CODE BELOW HERE //
-  
-  
+  //count variable
+  var count = 0;
+  //for in loop 
+  for (var key in object) {
+    //count increment
+    count++;
+    //return count
+  }
+  return count;
   
   
   // YOUR CODE ABOVE HERE //
@@ -101,8 +120,9 @@ function getObjectLength(object) {
  */
 function printObjectValuesInReverse(object) {
   // YOUR CODE BELOW HERE //
-  
-  
+
+
+
   
   
   // YOUR CODE ABOVE HERE //

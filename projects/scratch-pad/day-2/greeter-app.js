@@ -46,12 +46,13 @@ function greeter(hour) {
     //else if statement for good night
   } else if (hour >= 17 && hour <= 21) {
     return "Good Evening!";
-  }else {
+  } else {
     return "Good Night!";
   }
+  
         // YOUR CODE ABOVE HERE //
 }
-greeter(12);
+return greeter(12);
 /*
  * To test our greeter when developing, we need to fake some input data, ie, 
  * the hour, so just change the input value to check your work.
