@@ -33,14 +33,14 @@ for (var i = array.length - 1; i >= 0; i--) {
 }
 
 /** 
- *  Given an input object, return the object keys in an array
+ *  Given an input object, loop over the object and return the object keys
  */
 function getObjectKeys(object) {
   // YOUR CODE BELOW HERE //
 /* I: input is the object O: output is specifically the object's keys (properties) in an array */
 //for in loop with conditions   
-  for (var key in object) {
-    console.log(object[key]);
+  for (var keys in object) {
+    console.log(keys);
   }
    // YOUR CODE ABOVE HERE //
 }
