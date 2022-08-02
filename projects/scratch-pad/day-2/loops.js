@@ -12,11 +12,11 @@
  */
 function printArrayValues(array) {
   // YOUR CODE BELOW HERE //
-  
-  
-  
-  
-  // YOUR CODE ABOVE HERE //
+ /*I: input is an array and a for loop O: output is the values in the array */
+ for (var i = 0; i <= array.length; i++) {
+  console.log(array[i]);
+ } 
+    // YOUR CODE ABOVE HERE //
 }
 
 /** 
@@ -25,23 +25,24 @@ function printArrayValues(array) {
  */
 function printArrayValuesInReverse(array) {
   // YOUR CODE BELOW HERE //
-  
-  
-  
-  
-  // YOUR CODE ABOVE HERE //
+/* I: input is an array and a for loop O: output is the reverse array with the conditions in the for loop */
+for (var i = array.length - 1; i >= 0; i--) {
+  console.log(array[i]);
+}  
+   // YOUR CODE ABOVE HERE //
 }
 
 /** 
- * Given an input Object, return an Array containing the Object keys.
+ *  Given an input object, return the object keys in an array
  */
 function getObjectKeys(object) {
   // YOUR CODE BELOW HERE //
-  
-  
-  
-  
-  // YOUR CODE ABOVE HERE //
+/* I: input is the object O: output is specifically the object's keys (properties) in an array */
+//for in loop with conditions   
+  for (var key in object) {
+    console.log(object[key]);
+  }
+   // YOUR CODE ABOVE HERE //
 }
 
 /** 

@@ -35,13 +35,23 @@
 
 function greeter(hour) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
-    // YOUR CODE ABOVE HERE //
+  /* I: input is the value 0-24 representing the hour of the day. We will use an if else if conditional to 
+  give each greeting it's condition. O: output is the greeting that depends on the the inputed hour 0-24 */ 
+  //if statement for good morning
+  if (hour >= 0 && hour <= 11) {
+    return "Good Morning!";
+    //else if statement for good afternoon
+  }  else if (hour >= 12 && hour <= 16) {
+    return "Good Afternoon!";
+    //else if statement for good night
+  } else if (hour >= 17 && hour <= 21) {
+    return "Good Evening!";
+  }else {
+    return "Good Night!";
+  }
+        // YOUR CODE ABOVE HERE //
 }
-
+greeter(12);
 /*
  * To test our greeter when developing, we need to fake some input data, ie, 
  * the hour, so just change the input value to check your work.
@@ -53,7 +63,7 @@ function greeter(hour) {
  * var hour = today.getHours();
  */
 
-greeter(11);
+greeter(12);
 
 
 
