@@ -52,7 +52,7 @@ function greeter(hour) {
   
         // YOUR CODE ABOVE HERE //
 }
-return greeter(12);
+greeter(12);
 /*
  * To test our greeter when developing, we need to fake some input data, ie, 
  * the hour, so just change the input value to check your work.

@@ -11,21 +11,21 @@
  *  d. FINALLY, for numbers which are multiples of both three and five print “FizzBuzz”.
 */
 function fizzBuzz() {
-    // YOUR CODE GOES BELOW HERE //
+    // YOUR CODE GOES BELOW HERE //  
 //for loop to set conditions for index start stop and increment
 for (var i = 1; i < 101; i++) {
-    //set if statement for multiples of 3
-    if (i % 3 === 0) {
-        console.log("Fizz");
+    //set if statement for multiples of 15
+    if (i % 15 === 0) {
+       console.log("FizzBuzz");
+        //else if for multiples of 3
+    } else if (i % 3 === 0) {
+       console.log("Fizz");
         //else if for multiples of 5
     } else if (i % 5 === 0) {
-        console.log("Buzz");
-        //else if for multiples of both 3 and 5 or simply 15
-    } else if (i % 5 === 0 && i % 3 === 0) {
-        console.log("FizzBuzz");
+       console.log("Buzz");
         //else for every other number
     } else {
-        console.log(i);
+       console.log(i);
     }
 }
 
