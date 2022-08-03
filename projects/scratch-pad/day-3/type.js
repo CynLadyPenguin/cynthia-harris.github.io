@@ -14,7 +14,12 @@
  */
 function isArray(value) {
     // YOUR CODE BELOW HERE //
-    
+ //if statement 
+    if (Array.isArray(value)) {
+        return true;
+    } else {
+        return false;
+    }
     
     
     
@@ -32,10 +37,19 @@ function isArray(value) {
 function isObject(value) {
     // YOUR CODE BELOW HERE //
     
-    
-    
-    
-    // YOUR CODE ABOVE HERE //
+    //determine if typeof value is strictly and object (not array, date, or null)
+    if (Array.isArray(value)) {
+    return false;
+  } else if (value === null) {
+    return false;
+  } else if (value instanceof Date) {
+    return false;
+  } else if(value === undefined) {
+    return false;
+  } else {
+    return true;
+  }
+       // YOUR CODE ABOVE HERE //
 }
 
 /** 

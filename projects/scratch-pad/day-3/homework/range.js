@@ -23,8 +23,9 @@
  */
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
-    
-    
+  //create a variable for an empty array
+  var array = [];
+ 
     
     
     // YOUR CODE GOES ABOVE HERE //

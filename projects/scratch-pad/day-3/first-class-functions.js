@@ -13,9 +13,14 @@
  */
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
+
+  return function(value) {
+      if(value > base) {
+        return true;
+      }else {
+        return false;
+      }
+  }     
     
     // YOUR CODE ABOVE HERE //
 }
@@ -27,10 +32,14 @@ function createGreaterThanFilter(base) {
  */
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+  
+    return function(value) {
+        if(value < base) {
+          return true;
+        }else {
+          return false;
+        }
+    }       
     // YOUR CODE ABOVE HERE //
 }
 
@@ -41,8 +50,13 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    
-    
+  return function (str) {
+    if (str.charAt[0] === startsWith) {
+    return true;
+  } else {
+    return false;
+  }
+}   
     
     
     // YOUR CODE ABOVE HERE //
@@ -89,7 +103,9 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    
+   //take array of strings and a test function 
+   //as we loop through the strings all tests should return true
+   //if any string fails then false 
     
     
     
