@@ -120,8 +120,16 @@ function getObjectLength(object) {
  */
 function printObjectValuesInReverse(object) {
   // YOUR CODE BELOW HERE //
-var array = Object.keys(object); 
+  //initialize variable for empty array
+ var array = [];
+ //set up for in loop to create variable key
+ for (var key in object) {
+  //push the object's key value pairs into the array we created
+  array.push(object[key]); 
+ }
+ //create a for loop to decrement i starting with the array's length - 1 and stopping when i >= 0
  for (var i = array.length - 1; i >= 0; i--) {
+  //console log the array with the conditions of i
   console.log(array[i]);
  }
  
