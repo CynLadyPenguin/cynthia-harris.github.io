@@ -51,7 +51,7 @@ function createLessThanFilter(base) {
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
   return function (str) {
-    if (str.toUpperCase().startsWith(startsWith.toUpperCase())) {
+    if (str.charAt(0).toLowerCase() === startsWith.toLowerCase()) {
     return true;
   } else {
     return false;
@@ -70,7 +70,7 @@ function createStartsWithFilter(startsWith) {
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
     return function (str) {
-      if (str.toUpperCase().endsWith(endsWith.toUpperCase())) {
+      if (str.charAt(str.length - 1).toLowerCase() === endsWith.toLowerCase()) {
       return true;
     } else {
       return false;
@@ -96,9 +96,9 @@ function modifyStrings(strings, modify) {
    var arr = [];
    //for loop to iterate over the array 
    for (var i = 0; i < strings.length; i++) {
-      return arr.push((modify(strings[i])));
+      arr.push((modify(strings[i])));
    } 
-    return modifyStrings;
+    return arr;
     
     
     // YOUR CODE ABOVE HERE //
@@ -118,9 +118,16 @@ function allStringsPass(strings, test) {
    //take array of strings and a test function 
    //as we loop through the strings all tests should return true
    //if any string fails then false 
+   for (var i = 0; i < strings.length; i++) {
+    test(strings[i]);
     
-    
-    
+      }
+    if (test(strings) === true) {
+     return true;
+    } else if (test(strings) === false) {
+      return false;
+    }
+  
     // YOUR CODE ABOVE HERE //
 }
 

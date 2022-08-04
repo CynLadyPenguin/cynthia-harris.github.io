@@ -34,7 +34,7 @@
  */
 
 // YOUR CODE GOES BELOW HERE //
-function makeContact(id, nameFirst, nameLast) {
+function makeContact(id, nameFirst, nameLast) { //factory function like example
 
 } 
 
@@ -43,12 +43,21 @@ function makeContactList() {
     /*
      * You need something here to hold contacts. See length api for a hint:
      */
-    var contacts;
+    var contacts = [];
     
     return {
         // we implemented the length api for you //
         length: function() {
             return contacts.length;
+        },
+        addContact: function(contact){
+             contacts.push(contact);
+        },
+        findContact: function(fullName){ //"Max Gaudin"
+            console.log(fullName);
+             //iterate with for loop through the contacts
+             //determine if current object matches search if not return undefined
+             //how to determine undefined if no match?
         }
     }
 }
