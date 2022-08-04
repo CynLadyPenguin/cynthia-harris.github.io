@@ -34,11 +34,14 @@
  */
 
 // YOUR CODE GOES BELOW HERE //
-function makeContact(id, nameFirst, nameLast) { //factory function like example
-
-} 
-
-
+function makeContact(id, nameFirst, nameLast) {
+ //factory function like example
+ return {
+    id: id,
+    nameFirst: nameFirst,
+    nameLast: nameLast
+ };
+}
 function makeContactList() {
     /*
      * You need something here to hold contacts. See length api for a hint:
@@ -51,22 +54,35 @@ function makeContactList() {
             return contacts.length;
         },
         addContact: function(contact){
-             contacts.push(contact);
+             return contacts.push(contact);
         },
-        findContact: function(fullName){ //"Max Gaudin"
-            console.log(fullName);
-             //iterate with for loop through the contacts
-             //determine if current object matches search if not return undefined
-             //how to determine undefined if no match?
+        findContact: function(fullName){ 
+            for(var i = 0; i < contacts.length; i++) {
+                if(fullName === contacts[i]["nameFirst"] + " " + contacts[i]["nameLast"]) {
+                    return contacts[i];       
         }
     }
+},
+        removeContact: function(contact){
+            for(var i = 0; i < contacts.length; i++){
+                if(contacts[i] === contact) {
+                    return contacts.splice(i, 1);
+        }
+    }
+},
+        printAllContactNames: function(){
+           for (var i = 0; i < contacts.length; i++) {
+              return ("nameFirst" + "nameLast")[i]/n;
+           }
+        }
+
+    };
+
 }
 
 
-
-
 // YOUR CODE GOES ABOVE HERE //
-
+    
 
 
 
