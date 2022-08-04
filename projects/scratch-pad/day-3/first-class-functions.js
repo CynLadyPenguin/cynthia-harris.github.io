@@ -51,7 +51,7 @@ function createLessThanFilter(base) {
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
   return function (str) {
-    if (str.charAt[0] === startsWith) {
+    if (str.toUpperCase().startsWith(startsWith.toUpperCase())) {
     return true;
   } else {
     return false;
@@ -69,7 +69,14 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    
+    return function (str) {
+      if (str.toUpperCase().endsWith(endsWith.toUpperCase())) {
+      return true;
+    } else {
+      return false;
+    }
+  }   
+     
     
     
     
@@ -85,8 +92,13 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
-    
-    
+   //create variable with array to pass the results into
+   var arr = [];
+   //for loop to iterate over the array 
+   for (var i = 0; i < strings.length; i++) {
+      return arr.push((modify(strings[i])));
+   } 
+    return modifyStrings;
     
     
     // YOUR CODE ABOVE HERE //

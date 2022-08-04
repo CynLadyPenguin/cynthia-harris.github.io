@@ -39,14 +39,14 @@ function isObject(value) {
     
     //determine if typeof value is strictly and object (not array, date, or null)
     if (Array.isArray(value)) {
-    return false;
+     return false;
   } else if (value === null) {
-    return false;
+     return false;
   } else if (value instanceof Date) {
-    return false;
-  } else if(value === undefined) {
-    return false;
-  } else {
+     return false;
+  } else if(typeof value === undefined) {
+     return false;
+  }  else if (typeof value === "object") {
     return true;
   }
        // YOUR CODE ABOVE HERE //

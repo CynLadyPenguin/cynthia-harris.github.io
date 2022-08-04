@@ -25,8 +25,17 @@ function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
   //create a variable for an empty array
   var array = [];
- 
-    
+  
+  if (start < end) {
+      for (var t = start; t <= end; t++) {
+    array.push(t);
+  }  
+ } else if (start > end) {
+      for (var i = start; i >= end; i--) {
+    array.push(i);
+  } 
+}
+ return array;
     
     // YOUR CODE GOES ABOVE HERE //
 }
