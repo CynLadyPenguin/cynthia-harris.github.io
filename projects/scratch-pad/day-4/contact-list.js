@@ -71,10 +71,15 @@ function makeContactList() {
     }
 },
         printAllContactNames: function(){
+            var arr2 = [];
            for (var i = 0; i < contacts.length; i++) {
-              return ("nameFirst" + "nameLast")[i]/n;
+               arr2.push(contacts[i]["nameFirst"] + " " + contacts[i]["nameLast"]);
            }
+           return arr2.join("\n");
+            
+            
         }
+ 
 
     };
 
