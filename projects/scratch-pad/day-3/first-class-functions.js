@@ -119,14 +119,12 @@ function allStringsPass(strings, test) {
    //as we loop through the strings all tests should return true
    //if any string fails then false 
    for (var i = 0; i < strings.length; i++) {
-    test(strings[i]);
-    
-      }
-    if (test(strings) === true) {
-     return true;
-    } else if (test(strings) === false) {
+    if (test(strings[i]) === false){
       return false;
     }
+           
+      }
+      return true; 
   
     // YOUR CODE ABOVE HERE //
 }
