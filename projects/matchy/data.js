@@ -63,19 +63,36 @@ console.log(animal);
 // Step 6 - A Collection of Animals //////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-
+var animals = [];
+animals.push(animal);
+console.log(animals);
+var duck = {species: 'duck', name: 'Jerome', noises: ['quack', 'honk', 'sneeze', 'woosh']};
+animals.push(duck);
+console.log(animals);
+var fish = {species: 'fish', name: "Goldie", noises: ["glub", "splash"] };
+var hyena = {species: 'hyena', name: "Rex", noises: ["laugh", "bark"]};
+animals.push(fish);
+animals.push(hyena);
+console.log(animals);
 
 //////////////////////////////////////////////////////////////////////
 // Step 7 - Making Friends ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-
+var friends = [];
+//I didn't choose it. The data structure chose me. Listing strings is better in an array when you don't need your key value pairs.
+function getRandom(animals){
+  return Math.floor(Math.random(animals.name));
+  friends.push(animals.name[random]);
+}
+console.log(friends);
+animals.duck["friends"] = friends;
 
 /**
  * Nice work! You're done Part 1. Pat yourself on the back and
  * move onto Part 2 in the file called "functions.js"
  */
-
+0
 
 
 //////////////////////////////////////////////////////////////////////
