@@ -16,7 +16,7 @@
  *  var 
  *  var uniqueName
  *  var uniqueName =
- *  var uniqueName = true; //This declared variable has a value of true. If logged to the console (console.log(uniqueName)) the return will be the word "true".
+ *  var uniqueName = true; //This declared variable has an assigned value of true. If logged to the console (console.log(uniqueName)) the return will be the word "true".
  * 
  * 1. VAR, LET, CONST
  * 
