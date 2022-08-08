@@ -83,11 +83,13 @@ var friends = [];
 //I didn't choose it. The data structure chose me. Listing strings is better in an array when you don't need your key value pairs.
 function getRandom(animals){
   var random = Math.floor(Math.random() * animals.length);
-  friends.push(random);
+  item = animals[random];
+  friends.push(item);
+  return random;
 }
 console.log(friends);
 animals.duck["friends"] = friends;
-console.log(duck);
+console.log(getRandom(animals));
 /**
  * Nice work! You're done Part 1. Pat yourself on the back and
  * move onto Part 2 in the file called "functions.js"
