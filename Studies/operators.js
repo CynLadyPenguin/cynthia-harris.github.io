@@ -14,6 +14,8 @@
  *      /=	    Divide left operand value by right operand value and assign the result to the left operand.
  *      %=	    Remainder operator. Get the modulus of left operand divide by right operand and assign resulted modulus to the left operand.
  * 
+ * Example: x = 24; y = 4; x /= y    //using the /= operator changes x to 6. 
+ * 
  * 1. ARITHMETIC OPERATORS
  * 
  * Arithmetic operators are used to perform simple mathematic equations on numbers in your code. PEMDAS does apply when using these. Below is a list and what they do:
@@ -27,6 +29,10 @@
  *      ++      Increment
  *      --      Decrement
  * 
+ * Example: function subtract(x, y){
+ *             return x - y;
+ *            } //Will subtract y from x and return the value
+ * 
  * 2. COMPARISON OPERATORS
  * 
  * Comparison operators are used to compare two operands and return a boolean value (true or false). Here they are below with a brief description:
@@ -39,6 +45,12 @@
  *      >=      greater than or equal to compares whether the operand on the left is greater than or equal to the right
  *      <=      less than or equal to compares whether the operand on the left is less than or equal to the right
  * 
+ * Example: if ("a" === "A"){
+ *              return true;
+ *          } else {
+ *              return false;
+ *          } //Will return false because the left operand is not exactly the same as the right operand 
+ * 
  * 3. LOGICAL OPERATORS
  * 
  * Logical operators are used to combine two or more conditions. See below:
@@ -46,6 +58,12 @@
  *      &&      Logical And is used to return a true value ONLY if the two conditions are both true. Otherwise false will return.
  *      ||      Logical Or is used to return a true value if even one othe conditions are true. It will only return false if both conditions are false.
  *      !       It reverses the boolean result of the operand (or condition). !false will return true, and !true will return false.
+ * 
+ * Example: if ("1" === "1" && 4 > 7){
+ *              return true;
+ *          } else {
+ *              return false;
+ *          }
  * 
  * 4. UNARY OPERATORS
  * 
@@ -63,6 +81,10 @@
  * 
  * 5. TERNARY OPERATORS
  * 
+ * Ternary operators are special operators (:?) that assigns a value to a variable based on some condition. They are the short-hand for the if-else if conditional.
+ * The syntax is as follows:
+ * 
+ * (condition a ? expression if true : expression if false)
  * 
  * 
  * 
