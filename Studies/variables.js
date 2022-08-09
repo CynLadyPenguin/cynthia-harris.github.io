@@ -28,12 +28,20 @@
  * but, because of it's limitations, the var keyword is rarely used in real world application. Var limitations are actually that it is hoisted. When the var keyword is hoisted 
  * it means that it can be accessed globally. So if you name another variable the same name, you are only reassigning the value and the previous value will disappear. 
  * 
+ * ex. var ginger = "sweet herb";
+ * 
  * Let is a keyword used when you want flexibility, but not outside of your scope. Let can be reassigned, but unlike var, it cannot be hoisted. This means that when a value is 
  * assigned to Let it isn't as flexible. Let is also only available in the local or block scopes. While let can be reassigned it cannot be redeclared.
  * 
+ * ex. let hatTrick = "Pull a Rabbit";
+ *         hatTrick = "Long Tied Fabric Pulling"; // let can be reassigned
+ * 
  * Const is short for constant. Constant does exactly as it's name implies. It cannot be reassigned or redeclared. Const is also not hoisted. It cannot be accessed in the 
  * global scope. Only in local and block scopes. However, const is good to use if you have variables and values you don't want changed. The console will throw an error if you
- * try to reassign or redeclare a const variable. 
+ * try to reassign or redeclare a const variable. You can change an element or property, but you cannot reassign the const variable.
+ * 
+ * ex. const noChange = "Do not reassign this variable";
+ *           noChange = "Reassigned"; //this will throw an error as const variables cannot be reassigned.
  * 
  * 2. HOISTING
  * 
