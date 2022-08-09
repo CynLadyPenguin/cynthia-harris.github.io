@@ -86,12 +86,9 @@
  * 
  * (condition a ? expression if true : expression if false)
  * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
+ * Example: let age = 14;
+ *          let message;
+ *          age >= 16 ? (message = 'You can drive.') : (message = 'You cannot drive.')
+ *          console.log(message); //Will log "You cannot drive." because the age is 14.
  * 
  */
