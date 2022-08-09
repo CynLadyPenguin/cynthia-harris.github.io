@@ -60,20 +60,4 @@
  * function declarations over expressions. 
  * Taking your time to understand variables will greatly improve the quality of your code and help you to reduce mistakes in your code. 
  * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
  */
