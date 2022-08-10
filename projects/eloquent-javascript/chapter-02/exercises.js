@@ -4,21 +4,55 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 function triangles() {
-
+  let number = "#";
+  while (number <= 7){
+    console.log(number);
+    number += 2;
+  }
 }
 ////////////////////////////////////////////////////////////////////////////////
 // fizzBuzz ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
 function fizzBuzz() {
-  
+   
+//for loop to set conditions for index start stop and increment
+for (var i = 1; i <= 15; i++) {
+    //set if statement for multiples of 15
+    if (i % 15 === 0) {
+       console.log("fizzbuzz");
+        //else if for multiples of 3
+    } else if (i % 3 === 0) {
+       console.log("fizz");
+        //else if for multiples of 5
+    } else if (i % 5 === 0) {
+       console.log("buzz");
+        //else for every other number
+    } else {
+       console.log(i);
+    }
 }
+}
+ 
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
 function drawChessboard() {
+let size = 8;
+let board = "";
+for (let y = 0; y < size; y++){
+  for (let x = 0; x < size; x++){
+   if ((x + y) % 2 === 0){
+    board+= " #";
+   } else {
+    board+= "# ";
+   }
+  }
+  board+= "\n";
+}
 
 }
 
