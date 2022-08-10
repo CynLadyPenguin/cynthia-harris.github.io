@@ -3,7 +3,11 @@
 //////////////////////////////////////////////////////////////////////
 
 function objectValues(object) {
-
+var array = [];
+for(var key in object){
+    array.push(object[key]);
+}
+return array;
 } 
 
 //////////////////////////////////////////////////////////////////////
@@ -11,7 +15,13 @@ function objectValues(object) {
 //////////////////////////////////////////////////////////////////////
 
 function keysToString(object) {
-
+    var array = [];
+    var str = "";
+    for (var key in object){
+    array.push(key);
+    str = array.join(" ");
+}
+return str;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -19,7 +29,15 @@ function keysToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function valuesToString(object) {
-    
+    var array = [];
+    str = "";
+    for (var key in object){
+        if (typeof object[key] === 'string'){
+            array.push(object[key]);
+        }
+       str = array.join(" ");
+}
+return str;   
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -27,15 +45,23 @@ function valuesToString(object) {
 //////////////////////////////////////////////////////////////////////
 
 function arrayOrObject(collection) {
-    
-}
-
+    if (Array.isArray(collection) === true) {
+        return "array";
+     } else if (collection === null) {
+        return "null";
+     } else if(typeof collection === undefined) {
+        return "undefined";
+     }  else if (typeof collection === "object") {
+       return "object";
+     }
+    }
 //////////////////////////////////////////////////////////////////////
 // Function 5 - Capitalize Word //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeWord(string) {
-    
+
+  return string.charAt(0).toUpperCase() + string.slice(1); 
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -43,15 +69,22 @@ function capitalizeWord(string) {
 //////////////////////////////////////////////////////////////////////
 
 function capitalizeAllWords(string) {
+    var split = string.split(" ");
+    for (var i = 0; i < split.length; i++){
+      split[i] = split[i][0].toUpperCase() + split[i].substr(1);
     
-}
+    var capitals = split.join(" ");
+    }
+    return capitals;
+  }
 
 //////////////////////////////////////////////////////////////////////
 // Function 7 - Welcome Message //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function welcomeMessage(object) {
-
+    var message = "Welcome"
+    return messagse + object["name"] + "!";
 }
 
 //////////////////////////////////////////////////////////////////////
