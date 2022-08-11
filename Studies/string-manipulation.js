@@ -1,1 +1,11 @@
-//show 3 or 4 methods 
+/**
+ *  STRING MANIPULATION
+ * 
+ *  with operators and with string methods
+ *  show 3-4 methods
+ * 
+ * 
+ * 
+ * 
+ */
+
