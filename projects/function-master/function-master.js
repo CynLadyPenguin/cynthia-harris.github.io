@@ -104,19 +104,18 @@ return message;
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
-var str = "";
-var array = [];
-for (var key in object){
-  if (object["noises"] === true) {
-    array.push(object["noises"]);
-    str = array.join(" ");
-} else if (object["noises"] === false){
-  return "there are no noises";
-}  else {
-  return "there are no noises";
+if (object && object.noises) { // check that object and object.noises exists
+  
+  if (Array.isArray(object.noises)) { // check that object.noises is an Array
+      //since this array exists if it has value we'll check that
+      if (object.noises.length > 0) { // check length of array is > 0
+          return object.noises.join(" ");
+      } else {
+       
+  }
+  }
 }
-}
-return str;
+return "there are no noises";
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -138,11 +137,12 @@ for (var i = 0; i < string.length; i++){
 //////////////////////////////////////////////////////////////////////
 
 function addFriend (name, object) {
-var array = [];
-var friends = {};
-array.push(name);
-object["friends"].push(array);
-return friends;
+  if(object.friends){
+  if(Array.isArray(object.friends)){
+    object.friends.push(name);
+  }
+  }
+ return object;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -150,15 +150,48 @@ return friends;
 //////////////////////////////////////////////////////////////////////
 
 function isFriend(name, object) {
-
+//if obj.friends is an array and has property friends
+if(Array.isArray(object.friends) && object.hasOwnProperty("friends")) {
+  //loop through obj.friends
+  for(var i = 0; i < object.friends.length; i++) {
+    //if name is in obj.friends then return true
+    if(name === object.friends[i]) {
+      return true;  
+    }
+  }    
+} 
+return false;  
 }
-
 //////////////////////////////////////////////////////////////////////
 // Function 13 - Non-Friends /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
-
+//create empty array to return results into
+var nonfriends = []; 
+//iterate over the array looking for friends
+for (var i = 0; i < array.length; i++) {
+  //new var to hold the friends names that appear in the array
+    var friends = array[i].friends; 
+    //new variable to establish that the new friend shouldn't exist
+    var isFriend = false;
+    //if the name from the the array isn't the name we're testing for 
+    if  (array[i].name !== name) { 
+      //iterate over the friends
+        for (var e = 0; e < friends.length; e++) { 
+          //if friends with second looping conditions is a friend
+            if (friends[e] === name) { 
+                isFriend = true; //record that they have the person as a friend
+            } 
+        }
+        //
+        if (!isFriend) nonfriends.push(array[i].name); 
+    } else {
+        isFriend = true; 
+    }
+}
+return nonfriends;
+ 
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -166,7 +199,8 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-
+  object[key] = value;
+  return object;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -174,7 +208,15 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-
+for (var key in object){
+  for(var i = 0; i < array.length; i++){
+    if (array[i] === key){
+      delete object[key];
+      delete key;
+    }
+  }
+}
+return object;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -182,7 +224,17 @@ function removeProperties(object, array) {
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
-
+  var arr = [];
+        
+  // Loop through array values
+  for(i = 0; i < array.length; i++){
+    //if arr.indexof(array[i]) === -1)
+      if(arr.indexOf(array[i]) === -1) {
+        //push looped array into new empty array variable
+          arr.push(array[i]);
+      }
+  }
+  return arr;
 }
 
 //////////////////////////////////////////////////////////////////////
