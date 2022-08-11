@@ -83,8 +83,8 @@ function capitalizeAllWords(string) {
 //////////////////////////////////////////////////////////////////////
 
 function welcomeMessage(object) {
-    var message = "Welcome"
-    return messagse + object["name"] + "!";
+    var name = object.name;
+    return "Welcome " + name.charAt(0).toUpperCase() + name.slice(1) + "!"; 
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -92,7 +92,11 @@ function welcomeMessage(object) {
 //////////////////////////////////////////////////////////////////////
 
 function profileInfo(object) {
-
+  var name = object.name;
+  var species = object.species;
+  message = `${name.charAt(0).toUpperCase() + name.slice(1)} is a ${species.charAt(0).toUpperCase() + species.slice(1)}`;
+  
+return message;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -100,7 +104,19 @@ function profileInfo(object) {
 //////////////////////////////////////////////////////////////////////
 
 function maybeNoises(object) {
-
+var str = "";
+var array = [];
+for (var key in object){
+  if (object["noises"] === true) {
+    array.push(object["noises"]);
+    str = array.join(" ");
+} else if (object["noises"] === false){
+  return "there are no noises";
+}  else {
+  return "there are no noises";
+}
+}
+return str;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -108,7 +124,13 @@ function maybeNoises(object) {
 //////////////////////////////////////////////////////////////////////
 
 function hasWord(string, word) {
-
+for (var i = 0; i < string.length; i++){
+  if (string.includes(word)){
+    return true;
+  } else {
+    return false;
+  }
+}
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -116,7 +138,11 @@ function hasWord(string, word) {
 //////////////////////////////////////////////////////////////////////
 
 function addFriend (name, object) {
-
+var array = [];
+var friends = {};
+array.push(name);
+object["friends"].push(array);
+return friends;
 }
 
 //////////////////////////////////////////////////////////////////////
