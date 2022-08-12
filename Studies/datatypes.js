@@ -69,6 +69,11 @@
  * 
  * 11. COPY BY VALUE/COPY BY REFERENCE
  * In Javascript, there are different ways to pass values to a function. Depending on the data type, simple or complex, they get passed in different ways.
+ * Primitive or simple data types get passed to a function by copy/by value. This means that when the data type is referenced in the function, a copy of the original value 
+ * is made. The original value remains unchanged if the new variable referencing that value is reassigned. 
+ * Copy by reference is different from copy by value in that it is used for complex data types like arrays, objects, and functions. When a copy is made of a complex data type, 
+ * the new variable referencing the original points to it's address or exact location. So when it is reassigned, it changes the previous value as well. So it's not exactly
+ * like a copy and instead like a sign that points to a location. 
  * 
  * 
  * 
