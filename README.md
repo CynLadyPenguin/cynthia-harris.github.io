@@ -21,3 +21,10 @@
 in terminal, type => os {action} either submit or test
 submit will submit your work to change dot color in greenlight
 test will show how many parts of an assignment you are passing
+
+## To Access Lodown in Gitpod
+1) Go to top left 3 horizontal lines
+2) Click File > Open File
+3) In input field, delete everything but /workspace/
+4) Select lodown from the list of files below
+5) Select index.js from the list of files shown for lodown
