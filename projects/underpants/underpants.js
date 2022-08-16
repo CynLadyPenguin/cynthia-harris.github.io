@@ -3,6 +3,8 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 'use strict';
 
+// const { result } = require("lodash");
+
 var _ = {};
 
 
@@ -123,6 +125,7 @@ _.last = function(array, num){
     } else {
         return num = array.slice(-num);
     }
+    
 }
 
 /** _.indexOf
@@ -255,12 +258,12 @@ _.filter = function(array, func){
     //for loop to loop over the values in the array
     for(var i = 0; i < array.length; i++){
         //if the function returns true
-        if(func() === true){
-            //return the array elements pushed into the new array
-            return arr.push(array[i]);
-        }
-    func(array[i], i, array);
-}
+            if(func(array[i], i, array)){
+            //push the looped array into the empty array
+            arr.push(array[i]);
+        }   
+    }
+return arr;
 }
 
 /** _.reject
@@ -275,7 +278,19 @@ _.filter = function(array, func){
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
-
+_.reject = function(array, func){
+    //new empty array
+    let newArray = [];
+    //loop over array
+    for(var i = 0; i < array.length; i++){
+              //if the function returns false
+              if(func(array[i], i, array) === false){
+                //push the looped array into the empty array
+                newArray.push(array[i]);
+            }    
+    }
+    return newArray;       
+}
 
 /** _.partition
 * Arguments:
@@ -295,7 +310,25 @@ _.filter = function(array, func){
 *   }); -> [[2,4],[1,3,5]]
 }
 */
-
+_.partition = function(array, func){
+    //create var for empty array and truthy and falsy 
+    let truthy = [];
+    let falsy = [];
+    let combo = [];
+    //loop through the array  
+    for (var i = 0; i < array.length; i++){ 
+        //if func returns true
+        if(func(array[i], i, array)){
+            //push values into truthy
+            truthy.push(array[i]);     
+            //else if func returns false  
+        } else if(func(array[i], i, array) === false){
+            //push those values into falsy
+            falsy.push(array[i]);
+        }
+    }
+    return combo.concat([truthy], [falsy]);
+}
 
 /** _.map
 * Arguments:
@@ -312,7 +345,26 @@ _.filter = function(array, func){
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
-
+_.map = function(collection, func){
+    //create new variable to hold return
+    let newArray= [];
+    //if collection is an array
+    if(Array.isArray(collection)){
+        //iterate through the collection
+        for(var i = 0; i < collection.length; i++){
+            //function passes arguments of element, index, and collection
+        newArray.push(func(collection[i], i, collection));
+        //push collection into array  
+        }         
+    }else {
+        //loop over object
+        for(var key in collection){
+            //push func obj into newArray
+            newArray.push(func(collection[key], key, collection));
+        }
+    }
+return newArray;
+}
 
 /** _.pluck
 * Arguments:
@@ -346,7 +398,21 @@ _.filter = function(array, func){
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
-
+_.every = function(collection, func){
+    for(var i = 0; i < collection.length; i++)
+        if(Array.isArray(collection)){
+            return func(collection[i], i, collection);
+         } else if(func(collection[i], i, collection)){
+            return true;
+         } else if(func(collection[i], i, collection) === false){
+            return false;
+         } else if(collection === object){
+            for(var key in collection){
+                return func(collection[key], key, collection);
+            }
+            
+         }
+}
 
 /** _.some
 * Arguments:
