@@ -42,10 +42,17 @@ var _ = {};
 * _.typeOf("javascript") -> "string"
 * _.typeOf([1,2,3]) -> "array"
 */
-_.typeof = function(value){
-    return value.typeof;
-}
-
+_.typeOf = function(value){
+    if (Array.isArray(value)) {
+        return "array";
+     } else if (value === null) {
+        return "null";
+     } else if(typeof value === undefined) {
+        return "undefined"; 
+     } else {
+       return typeof(value);
+     }
+    }
 /** _.first
 * Arguments:
 *   1) An array
@@ -63,7 +70,24 @@ _.typeof = function(value){
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
-
+_.first = function(array, num){
+ //if # is not a number or blank return first element array[0]
+ if (!num){
+    return array[0];
+    //if num is negative
+} else if (num < 0){
+    return [];
+    //if num > array length
+} else if (num > array.length){
+    return array;
+    //if array param is not an array
+} else if (Array.isArray(array) === false){
+    return [];
+    //else return the first few values in the array equal to num
+} else {
+    return num = array.slice(0, num);
+}
+}
 
 /** _.last
 * Arguments:
@@ -82,7 +106,24 @@ _.typeof = function(value){
 *   _.last(["a", "b", "c"], 1) -> "c"
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
-
+_.last = function(array, num){
+    //if num is not a number return last value in the array
+    if(!num){
+        return array[array.length - 1];
+        //if array isn't an array then return an empty array
+    } else if(Array.isArray(array) === false){
+        return [];
+        //if the num is negative then return an empty array
+    } else if(num < 0){
+        return [];
+        //if the num is greater than the array length then return the whole array
+    } else if(num > array.length){
+        return array;
+        //otherwise return the values at the end of the array equal to num
+    } else {
+        return num = array.slice(-num);
+    }
+}
 
 /** _.indexOf
 * Arguments:
@@ -99,7 +140,17 @@ _.typeof = function(value){
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
-
+_.indexOf = function(array, value){
+    //for loop to loop through array
+    for(var i = 0; i < array.length; i++){
+        //if looped array has the value
+        if(array[i] === value){
+            //return the index of that value at first occurence. otherwise return -1
+            return array.indexOf(value);
+        }
+    }
+    return -1;
+}
 
 /** _.contains
 * Arguments:
@@ -115,7 +166,17 @@ _.typeof = function(value){
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
+_.contains = function(array, value){
+    //for loop to loop through array
+    for(var i = 0; i < array.length; i++){
+        //if looped array has a certain value then return true. Return false at bottom since any other condition should return false
+    if(array[i] === value){
+        return true;
 
+    }
+}
+return false;
+}
 
 /** _.each
 * Arguments:
@@ -159,7 +220,19 @@ _.each = function(collection, func){
 * Examples:
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
-
+_.unique = function(array){
+    //create new empty array to hold results
+    var arr = [];
+    //loop through the array
+    for(var i = 0; i < array.length; i++){
+        //if statement index of array value should be equal to current index
+       if(array.indexOf(array[i]) === i){
+        //push new looped array without duplicated into empty array
+            arr.push(array[i]);
+       } 
+    }
+    return arr;
+}
 
 /** _.filter
 * Arguments:
@@ -176,7 +249,19 @@ _.each = function(collection, func){
 * Extra Credit:
 *   use _.each in your implementation
 */
-
+_.filter = function(array, func){
+    //new empty array to hold the results
+    let arr = [];
+    //for loop to loop over the values in the array
+    for(var i = 0; i < array.length; i++){
+        //if the function returns true
+        if(func() === true){
+            //return the array elements pushed into the new array
+            return arr.push(array[i]);
+        }
+    func(array[i], i, array);
+}
+}
 
 /** _.reject
 * Arguments:
