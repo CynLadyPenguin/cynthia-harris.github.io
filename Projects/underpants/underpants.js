@@ -366,7 +366,7 @@ _.map = function(collection, func){
         }
     }
 return newArray;
-};
+}
 
 /** _.pluck
 * Arguments:
@@ -379,8 +379,8 @@ return newArray;
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 _.pluck = function(array, key) {
-    //return array map (function o returns the value of key)
-    return array.map(o => o[key]);
+    //return array map (function parameter is obj returns the obj value)
+    return array.map(obj => obj[key]);
   }
 
 /** _.every
@@ -468,36 +468,49 @@ _.every = function(collection, func){
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 _.some = function(collection, func){
-    //if collection is array
+//if no func 
+if(!func){
     if(Array.isArray(collection)){
         //loop over collection
-        for (var i = 0; i < collection.length; i++){
-             //call func with element(collection[i]), index(i), and collection
-        if(func(collection[i], i, collection)){
-            return true;
-        } else {
-            return false;
-}
-    } 
-        }else { //if collection is obj
-            //loop over obj
-            for (var key in collection){
-                //call func with current value(collection[key]), current key(key), and collection
-                if(func(collection[key], key, collection)){
-                    return true; 
-                } else {
-                    return false;
+        for(var i = 0; i < collection.length; i++){
+            //if no falsy values in collection then return true
+            if(collection[i]){
+                return true;
+            }
+        }
+    } else { //it's an obj
+        //loop over object
+            for(let key in collection){
+                //if values aren't falsy, return true
+                if(collection[key]){
+                    return true;
                 }
-        
+            }
     }
-}
-    
-    
-    //if return value of calling func is true, return true
-    //if false for all elements, return false
-    //if !func the return true if at least one element is truthy otherwise false
-}
+    //else if there is a func
+} else {
+    if(Array.isArray(collection)){
+        //loop through it
+        for (let i = 0; i < collection.length; i++){
+            //return true if no false conditions found
+            if(func(collection[i], i, collection)){
+                return true;
+            }
+        }
 
+    }else { //if collection is an object
+        //loop over the object
+        for (let key in collection){
+            //if func returns no false value, return true
+            if(func(collection[key], key, collection)){
+                 return true;
+        } 
+    } 
+    }
+        }
+    
+return false;
+}
 /** _.reduce
 * Arguments:
 *   1) An array
@@ -532,10 +545,11 @@ _.some = function(collection, func){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
-_.extend = function(...obj){
-    let obj1 = {}; 
-   obj1 = Object.assign(obj1, ...obj);
-    return obj1;
+_.extend = function(...obj){ 
+    //return obj.assign 
+    //the parameter obj with spread operator is the target
+    //an empty array is a placeholder for an obj
+   return Object.assign(...obj, {});   
  }
     
 //////////////////////////////////////////////////////////////////////
