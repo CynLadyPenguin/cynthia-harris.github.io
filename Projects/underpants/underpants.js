@@ -529,7 +529,9 @@ return false;
 * Examples:
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
-
+_.reduce = function(array, func, seed){
+    
+}
 
 /** _.extend
 * Arguments:
