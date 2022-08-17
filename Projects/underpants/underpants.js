@@ -5,6 +5,8 @@
 
 // const { result } = require("lodash");
 
+
+
 var _ = {};
 
 
@@ -364,7 +366,7 @@ _.map = function(collection, func){
         }
     }
 return newArray;
-}
+};
 
 /** _.pluck
 * Arguments:
@@ -376,7 +378,10 @@ return newArray;
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
-
+_.pluck = function(array, key) {
+    //return array map (function o returns the value of key)
+    return array.map(o => o[key]);
+  }
 
 /** _.every
 * Arguments:
@@ -399,21 +404,49 @@ return newArray;
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
 _.every = function(collection, func){
-    for(var i = 0; i < collection.length; i++)
+//if no func 
+    if(!func){
         if(Array.isArray(collection)){
-            return func(collection[i], i, collection);
-         } else if(func(collection[i], i, collection)){
-            return true;
-         } else if(func(collection[i], i, collection) === false){
-            return false;
-         } else if(collection === object){
-            for(var key in collection){
-                return func(collection[key], key, collection);
+            //loop over collection
+            for(var i = 0; i < collection.length; i++){
+                //if no truthy values in collection then return false
+                if(!collection[i]){
+                    return false;
+                }
             }
+        } else { //it's an obj
+            //loop over object
+                for(var key in collection){
+                    //if not values are truthy return false
+                    if(!collection[key]){
+                        return false;
+                    }
+                }
+        }
+        //else if there is a func
+    } else {
+        if(Array.isArray(collection)){
+            //loop through it
+            for (var i = 0; i < collection.length; i++){
+                //return false if no true conditions found
+                if(func(collection[i], i, collection) ===  false){
+                    return false;
             
-         }
-}
 
+        }else { //if collection is an object
+            //loop over the object
+            for (var key in collection){
+                //if func returns no true values, return false
+                if(func(collection[key], key, collection) === false){
+                     return false;
+            } 
+        } 
+        }
+    }
+    }
+}
+   return true;
+}
 /** _.some
 * Arguments:
 *   1) A collection
@@ -434,7 +467,36 @@ _.every = function(collection, func){
 *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
-
+_.some = function(collection, func){
+    //if collection is array
+    if(Array.isArray(collection)){
+        //loop over collection
+        for (var i = 0; i < collection.length; i++){
+             //call func with element(collection[i]), index(i), and collection
+        if(func(collection[i], i, collection)){
+            return true;
+        } else {
+            return false;
+}
+    } 
+        }else { //if collection is obj
+            //loop over obj
+            for (var key in collection){
+                //call func with current value(collection[key]), current key(key), and collection
+                if(func(collection[key], key, collection)){
+                    return true; 
+                } else {
+                    return false;
+                }
+        
+    }
+}
+    
+    
+    //if return value of calling func is true, return true
+    //if false for all elements, return false
+    //if !func the return true if at least one element is truthy otherwise false
+}
 
 /** _.reduce
 * Arguments:
@@ -470,7 +532,12 @@ _.every = function(collection, func){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
-
+_.extend = function(...obj){
+    let obj1 = {}; 
+   obj1 = Object.assign(obj1, ...obj);
+    return obj1;
+ }
+    
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
