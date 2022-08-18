@@ -530,7 +530,27 @@ return false;
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 _.reduce = function(array, func, seed){
-    
+    //create variable to hold result
+    let result;
+    //detemine if seed was passed in
+    if(seed !== undefined){
+        //set result to start at seed
+        result = seed;
+        //iterate over the array
+        for(let i = 0; i < array.length; i++){
+            //reassign result to whatever function resolves to
+            //with parameters of func being result and current value, index, and array
+            result = (func(result, array[i], i, array));
+          }  
+    }else{ //else seed is undefined
+        //set result equal to array[0]
+        result = array[0];
+        //iterate starting at 1 index
+        for(let i = 1; i < array.length; i++){
+            result = func(result, array[i], i, array);
+        }
+    }   
+    return result;
 }
 
 /** _.extend
