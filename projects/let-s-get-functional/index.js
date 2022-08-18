@@ -31,13 +31,14 @@ var maleCount = function(array) {
 };
 
 var femaleCount = function(array){
-    let result;
-    var females = _.reduce(array, function(acc, current){
-        if(current.gender === "female"){
-            result += 1;
-        }
-    }, 0);        
     
+    var females = _.reduce(array, function(accumulator, customer){
+        if(customer.gender === "female"){
+            accumulator += 1;
+        }
+        return accumulator; 
+    }, 0);        
+   return females;  
 };
 
 var oldestCustomer = function(array){
