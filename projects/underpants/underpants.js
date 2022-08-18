@@ -239,7 +239,7 @@ _.unique = function(array){
     return arr;
 }
 
-/** _.filter
+/** _filter
 * Arguments:
 *   1) An array
 *   2) A function
