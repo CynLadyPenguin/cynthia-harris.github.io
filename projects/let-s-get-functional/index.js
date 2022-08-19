@@ -42,15 +42,38 @@ var femaleCount = function(array){
 };
 
 var oldestCustomer = function(array){
-    let oldest = _.filter(array, function(customer){
-
+    let result = "";
+    var oldest = _.filter(array, function(customer) {return customer.age >= age})
+     
+};
+return result;
+//if customer[i].age > customer.age
+//result = customer[i].name;
+var youngestCustomer = function(array){
+    let result = "";
+    let youngest = _.filter(array, function(customer){
+       
+            
+            
+        
     })
-    
+  return result;  
 };
 
-var youngestCustomer;
 
-var averageBalance;
+
+var averageBalance = function(array){
+    let total = 0;
+    let sum = 0;
+    let balance = _.filter(array, function(customer){
+        for(var i = 0; i < customer.balance.length; i++){
+            sum += i;
+            total = sum / 8;
+        }
+        return total; 
+    })
+    return balance;
+};
 
 var firstLetterCount;
 
