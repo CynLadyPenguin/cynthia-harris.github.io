@@ -5,6 +5,7 @@
 var customers = require('./data/customers.json');
 var _ = require('underbar');
 const { count } = require('console');
+const { result } = require('lodash');
 
 /**
  * 1. Import your lodown module using the require() method,
@@ -42,22 +43,27 @@ var femaleCount = function(array){
 };
 
 var oldestCustomer = function(array){
-    let result = "";
-    var oldest = _.filter(array, function(customer) {return customer.age >= age})
-     
+    var highestAge = 0;
+    var oldestName = _.reduce(array, function(accumulator, customer) {
+      if(customer.age > highestAge) {
+        accumulator = customer.name;
+        highestAge = customer.age;       
+      }
+      return accumulator;
+    },'')
+return oldestName;
 };
-return result;
-//if customer[i].age > customer.age
-//result = customer[i].name;
+    
+
 var youngestCustomer = function(array){
-    let result = "";
-    let youngest = _.filter(array, function(customer){
-       
-            
-            
-        
-    })
-  return result;  
+    
+    let youngest = _.reduce(array, function(acc, customer){
+        if(customer.age < acc.age){
+            acc = customer;
+        }
+      return acc;                  
+    });
+  return youngest.name;  
 };
 
 
