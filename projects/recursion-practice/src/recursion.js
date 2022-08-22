@@ -31,25 +31,51 @@ var arraySum = function(array) {
 
 // 4. Check if a number is even.
 var isEven = function(n) {
-  if(n === 1){
-    return false;
-  } else if(n === 0){
+  if (n == 0){
     return true;
-  } else{
-  return isEven(n-2);
-  }
+  }else if (n == 1){
+    return false;
+  }else if (n < 0){
+    return isEven(-n);
+  }else {
+    return isEven(n - 2);
+}
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
-var sumBelow = function(n) {
-  
+var sumBelow = function(n, sum = 0) {
+  //base
+  if(!n){
+    return sum;
+  } else if(n < 0){
+    return n - sumBelow(-n - 1) + 1;
+  //recursion 
+  }else{
+    return n + sumBelow(n - 1) - 1;
+  }
 };
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
-var range = function(x, y) {
+var range = function(x, y, ) {
+  var isIncluded = true;
+  if (x > y) {
+    var temp = x;
+    x = y;
+    y = temp;
+    isIncluded = false;
+  }
+  if (x === y){
+     return [];
+  }else if (x+1 === y){
+   return [];
+  }else {
+  var res = range(x, y-1);
+  res.push(y-1);
+  return isIncluded ? res : res.reverse();
+  } 
 };
 
 // 7. Compute the exponent of a number.
@@ -58,6 +84,16 @@ var range = function(x, y) {
 // Example:  exponent(4,3);  // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+  var isNeg = false;
+  if (exp < 0) {
+    isNeg = true;
+    exp *= -1;
+  } else if (exp === 0){
+     return 1;
+  } 
+    var res = base * exponent(base, exp-1);
+    return !isNeg ? res : 1/res;
+  
 };
 
 // 8. Determine if a number is a power of two.
@@ -65,14 +101,41 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  if (n === 0){
+     return false;
+  }else if (n === 1){
+     return true;
+  }else if (n%2 !== 0) {
+    return false;
+  }
+  return powerOfTwo(n/2);
+  
+
 };
 
 // 9. Write a function that accepts a string a reverses it.
 var reverse = function(string) {
+  //base
+  if(string.length === 0){
+    return string;
+  }
+  //recursion
+  return reverse(string.substring(1)) + string.charAt(0);
 };
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+  if (string.length === 0){
+     return true;
+  }
+  if (string.length === 1){
+     return true;
+  }
+  if (string.charAt(0).toLowerCase() !== string.charAt(string.length - 1).toLowerCase()) {
+    return false;
+  }
+  var str = string.substring(1, string.length - 1);
+  return palindrome(str);
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
@@ -87,6 +150,23 @@ var modulo = function(x, y) {
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
 var multiply = function(x, y) {
+  var isNeg = false;
+  if (x < 0) {
+    isNeg = !isNeg;
+    x = -x;
+  }
+  if (y < 0) {
+    isNeg = !isNeg;
+    y = -y;
+  }
+  if (y === 0 || x === 0){
+     return 0;
+  }
+  if (y === 1){
+     return x;
+  }
+  var res = x + multiply(x, y-1)
+  return isNeg ? -res : res;
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
@@ -108,32 +188,71 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+  if (str1.length === 0 && str2.length === 0){
+     return true;
+  }
+  if (str1[0] !== str2[0]){
+    return false;
+  } 
+  return compareStr(str1.substring(1), str2.substring(1));
+
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
 var createArray = function(str){
+  if (str.length === 1){
+     return [str[0]];
+  }
+  var list = createArray(str.substring(1));
+  list.unshift(str[0]);
+  return list;
 };
 
 // 17. Reverse the order of an array
 var reverseArr = function (array) {
+  if (array.length === 1){
+     return [array[0]];
+  }
+  var list = reverseArr(array.slice(1, array.length));
+  list.push(array[0]);
+  return list;
 };
 
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
 var buildList = function(value, length) {
+  if (length === 0){
+     return [];
+  }
+  var list = buildList(value, length-1);
+  list.push(value);
+  return list;
 };
 
 // 19. Count the occurence of a value inside a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
 var countOccurrence = function(array, value) {
+  if (array.length === 0){
+     return 0;
+  }
+  if (array[0] === value) {
+    return 1 + countOccurrence(array.slice(1, array.length), value);
+  }
+  return countOccurrence(array.slice(1, array.length), value);
 };
 
 // 20. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
 var rMap = function(array, callback) {
+  if (array.length === 0){
+     return [];
+  }
+  var list = rMap(array.slice(1, array.length), callback);
+  list.unshift(callback(array[0]));
+  return list;
 };
 
 // 21. Write a function that counts the number of times a key occurs in an object.
