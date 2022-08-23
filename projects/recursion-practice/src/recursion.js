@@ -45,7 +45,7 @@ var isEven = function(n) {
     return false;
     //if n is negative the return isEven with negative n
   }else if (n < 0){
-    return isEven(-n);
+    return isEven(n + 2);
   }else {
     //if n is above 1 and positive return isEven n - 2 until the base cases are met
     return isEven(n - 2);
@@ -151,17 +151,23 @@ var reverse = function(string) {
   }
   //recursion
   //reverse method 
-  //string.substring returns the first character in the string plus the character at 0 index (after each return this character will be differen)
+  //string.substring returns the first character in the string plus the character at 0 index (after each return this character will be different)
   return reverse(string.substring(1)) + string.charAt(0);
 };
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+  //if string has no length then return true
   if (string.length === 0){
      return true;
   }
+  //if string length is 1 then return true
   if (string.length === 1){
      return true;
+  }
+  //if string includes spaces return true
+  if(string.includes(" ")){
+    return true;
   }
   if (string.charAt(0).toLowerCase() !== string.charAt(string.length - 1).toLowerCase()) {
     return false;
@@ -197,8 +203,8 @@ var multiply = function(x, y) {
   if (y === 1){
      return x;
   }
-  var res = x + multiply(x, y-1)
-  return isNeg ? -res : res;
+  var rest = x + multiply(x, y - 1)
+  return isNeg ? -rest : rest;
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
