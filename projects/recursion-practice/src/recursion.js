@@ -5,11 +5,15 @@
 // Example:  5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5);  // 120
 var factorial = function(n) {
+  //base case if n is negative return null
   if(n < 0){
     return null;
+    //if n is zero, return 1
   }else if(n === 0){
     return 1;
   } else {
+    //return n * factorial n - 1
+    //n = 8 (8 * (8 - 1)) = 56
     return n * factorial(n - 1);
   }
 };
@@ -17,9 +21,11 @@ var factorial = function(n) {
 // 2. Compute the sum of an array of integers.
 // Example:  sum([1, 2, 3, 4, 5, 6]);  // 21
 var sum = function(array) {
+  //base case if array has no length then return 0
   if(array.length === 0){
     return 0;
   } else{
+    //the first index of array(after slicing and at beginning) + sum(array[0] sliced off), continue looping until array.length = 0
     return array[0] + sum(array.slice(1));
   }
 };
@@ -31,13 +37,17 @@ var arraySum = function(array) {
 
 // 4. Check if a number is even.
 var isEven = function(n) {
-  if (n == 0){
+  //base case if n is 0 return true
+  if (n === 0){
     return true;
-  }else if (n == 1){
+    //if n is 1 return false
+  }else if (n === 1){
     return false;
+    //if n is negative the return isEven with negative n
   }else if (n < 0){
     return isEven(-n);
   }else {
+    //if n is above 1 and positive return isEven n - 2 until the base cases are met
     return isEven(n - 2);
 }
 };
@@ -46,12 +56,14 @@ var isEven = function(n) {
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 var sumBelow = function(n, sum = 0) {
-  //base
+  //base if n is not a number then  return sum (in this case 0)
   if(!n){
     return sum;
+    //if n is negative then return the number - sumBelow(negative number - 1(leads to next negative number in loop)). Then add 1 to it to make it go back up to zero 
+    //instead of down to -11(would create an infinite loop)
   } else if(n < 0){
     return n - sumBelow(-n - 1) + 1;
-  //recursion 
+  //otherwise just return n + sumBelow(n - 1) - 1
   }else{
     return n + sumBelow(n - 1) - 1;
   }
@@ -60,21 +72,30 @@ var sumBelow = function(n, sum = 0) {
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y, ) {
+  //create new var assigned value of true if is included
   var isIncluded = true;
+  //if y is lower than x
   if (x > y) {
+    //temporary variable to hold x and reassign x to y 
     var temp = x;
-    x = y;
+    x = y; 
+    //reassign y to temp variable and assign isInc to false
     y = temp;
     isIncluded = false;
   }
+  //if x and y are equal just return an empty array
   if (x === y){
      return [];
-  }else if (x+1 === y){
+     //if x is one digit away from y then return an empty array
+  }else if (x + 1 === y){
    return [];
   }else {
-  var res = range(x, y-1);
-  res.push(y-1);
-  return isIncluded ? res : res.reverse();
+    //assign variable rest to the range of x and y - 1
+  var rest = range(x, y - 1);
+  //push the value of y - 1 into rest
+  rest.push(y - 1);
+  //if isInc equals rest(value of y - 1) return true, otherwise (if false) return rest reversed
+  return isIncluded ? rest : rest.reverse();
   } 
 };
 
@@ -84,15 +105,21 @@ var range = function(x, y, ) {
 // Example:  exponent(4,3);  // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+  //assign variable for negative numbers to return false
   var isNeg = false;
+  //if exp is neg then isNeg is reassigned true and exp should loop through multiplying each value times -1
   if (exp < 0) {
     isNeg = true;
     exp *= -1;
-  } else if (exp === 0){
+    //if exp is zero then return 1
+  } else if(exp === 0){
      return 1;
   } 
-    var res = base * exponent(base, exp-1);
-    return !isNeg ? res : 1/res;
+  //recursion
+  //var rest is equal to the base times the exponent of base and exp -1 
+    var rest = base * exponent(base, exp - 1);
+    //if not false then return rest(num) and if false then return 1/rest(1 divided by rest(num))
+    return !isNeg ? rest : 1/rest;
   
 };
 
@@ -101,13 +128,16 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  //if n is 0(return false), if 1 return true
   if (n === 0){
      return false;
   }else if (n === 1){
      return true;
+     //if n remainder 2 is not zero then the number is not a power of two (return false)
   }else if (n%2 !== 0) {
     return false;
   }
+  //if n remainder 2 is zero (true) return n divided by 2 and repeat until base case is met
   return powerOfTwo(n/2);
   
 
@@ -115,11 +145,13 @@ var powerOfTwo = function(n) {
 
 // 9. Write a function that accepts a string a reverses it.
 var reverse = function(string) {
-  //base
+  //base if string has no length then just return it
   if(string.length === 0){
     return string;
   }
   //recursion
+  //reverse method 
+  //string.substring returns the first character in the string plus the character at 0 index (after each return this character will be differen)
   return reverse(string.substring(1)) + string.charAt(0);
 };
 
