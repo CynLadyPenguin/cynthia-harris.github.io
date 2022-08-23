@@ -152,7 +152,7 @@ var reverse = function(string) {
   //recursion
   //reverse method 
   //string.substring returns the first character in the string plus the character at 0 index (after each return this character will be different)
-  return reverse(string.substring(1)) + string.charAt(0);
+  return reverse(string.slice(1)) + string.charAt(0);
 };
 
 // 10. Write a function that determines if a string is a palindrome.
@@ -169,10 +169,13 @@ var palindrome = function(string) {
   if(string.includes(" ")){
     return true;
   }
+  //make char at index 0 lowercase and if it's not equal to the char at the end (lowercased), return false
   if (string.charAt(0).toLowerCase() !== string.charAt(string.length - 1).toLowerCase()) {
     return false;
   }
-  var str = string.substring(1, string.length - 1);
+//set new variable equal to the first index through the last index
+  var str = string.slice(1, string.length - 1);
+  //return 
   return palindrome(str);
 };
 
@@ -226,71 +229,91 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+  //if str1 and str2 are both empty return true(they are identical)
   if (str1.length === 0 && str2.length === 0){
      return true;
   }
+  //if str1 first index does not equal str2 first index return false(they are not identical)
   if (str1[0] !== str2[0]){
     return false;
   } 
-  return compareStr(str1.substring(1), str2.substring(1));
+  //keep returning the strings with the first index removed until they are not identical
+  return compareStr(str1.slice(1), str2.slice(1));
 
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
 var createArray = function(str){
+  //if string is empty then return the empty string
+  if(str.length === 0){
+    return "";
+  }
+  //if string length is 1 then just return the first index inside an array
   if (str.length === 1){
      return [str[0]];
   }
-  var list = createArray(str.substring(1));
-  list.unshift(str[0]);
-  return list;
+  //create variable to hold createArray with first index sliced
+  var rest = createArray(str.slice(1));
+  //move the first index of the string to the front of that variable
+  rest.unshift(str[0]);
+  return rest;
 };
 
 // 17. Reverse the order of an array
-var reverseArr = function (array) {
+var reverseArr = function (array, output = []) {
+  //if the array only has one thing in it then return that value inside an array
   if (array.length === 1){
      return [array[0]];
   }
-  var list = reverseArr(array.slice(1, array.length));
-  list.push(array[0]);
-  return list;
+  //set output equal to the reverseArr with first through last value sliced (don't forget default param)
+  output = reverseArr(array.slice(1, array.length), output);
+  //push first value from array into output(empty array)
+  output.push(array[0]);
+  return output;
 };
 
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
 // buildList(7,3) // [7,7,7]
-var buildList = function(value, length) {
+var buildList = function(value, length, output = []) {
+  //if length is zero then return the array empty
   if (length === 0){
-     return [];
+     return output;
   }
-  var list = buildList(value, length-1);
-  list.push(value);
-  return list;
+//new variable to hold function with value and length - 1 (loop through and return each one with one less)
+  output = buildList(value, length - 1);
+  //push the new value into the array
+  output.push(value);
+  return output;
 };
 
 // 19. Count the occurence of a value inside a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
 var countOccurrence = function(array, value) {
+  //if array has no values return 0 because we don't want it to mess with the final value
   if (array.length === 0){
      return 0;
   }
+  //if the first value in the array is the value
   if (array[0] === value) {
+    //return the count of the value + 1
     return 1 + countOccurrence(array.slice(1, array.length), value);
   }
+  //otherwise keep looping through until you find the value
   return countOccurrence(array.slice(1, array.length), value);
 };
 
 // 20. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
-var rMap = function(array, callback) {
+var rMap = function(array, callback, output = []) {
   if (array.length === 0){
-     return [];
+     return output;
   }
-  var list = rMap(array.slice(1, array.length), callback);
-  list.unshift(callback(array[0]));
-  return list;
+  var output = rMap(array.slice(1, array.length), callback);
+  output.unshift(callback(array[0]));
+  return output;
 };
 
 // 21. Write a function that counts the number of times a key occurs in an object.
@@ -326,28 +349,33 @@ var fibonacci = function(n) {
 // nthFibo(7); // 13
 // nthFibo(3); // 2
 var nthFibo = function(n) {
-  //base
+  //base if n is negative return null
   if(n < 0){
     return null;
   }
+  //if n is 0 return 0
   if(n === 0){
     return 0;
   }
+  //if n is 1 return 1
   if(n === 1){
     return 1;
   }
-  return nthFibo(n-1) + nthFibo(n-2);
+  //nthFibo is n -1 + n -2
+  return nthFibo(n - 1) + nthFibo(n - 2);
 };
 
 // 26. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
 // capitalizedWords(words); // ['I', 'AM', 'LEARNING', 'RECURSION']
 var capitalizeWords = function(input) {
-  //base
+  //base if the length is zero then return input
   if(input.length === 0){
     return input;
   }
+  //new variable to hold recur call (input with first index through whole length of input sliced out
   var capitals = capitalizeWords(input.slice(1, input.length));
+  //add uppercase first index to front of variable
   capitals.unshift(input[0].toUpperCase());
   return capitals;
 };
@@ -355,12 +383,14 @@ var capitalizeWords = function(input) {
 // 27. Given an array of strings, capitalize the first letter of each index.
 // capitalizeFirst(['car', 'poop', 'banana']); // ['Car', 'Poop', 'Banana']
 var capitalizeFirst = function(array) {
-    //base
+    //base if array has no length then return empty array
     if(array.length === 0){
       return [];
     }
+    //assign var to recur call (array with 1 index through entire array sliced out)
     var capital = capitalizeFirst(array.slice(1, array.length));
-    capital.unshift(array[0][0].toUpperCase() + array[0].substring(1));
+    //add index 0 of index 0 (uppercased) and index 0 sliced to variable 
+    capital.unshift(array[0][0].toUpperCase() + array[0].slice(1));
     return capital;
 };
 
@@ -384,16 +414,20 @@ var flatten = function(arrays) {
 // 30. Given a string, return an object containing tallies of each letter.
 // letterTally('potato'); // {'p':1, 'o':2, 't':2, 'a':1}
 var letterTally = function(str, obj = {}) {
-  //base
+  //base if string has no length then return empty obj
   if (str.length === 0){
      return obj;
   }
-  letterTally(str.substring(1), obj);
-  if (obj[str[0]] === undefined) {
+  //recur call with first index sliced
+  letterTally(str.slice(1), obj);
+  //if the first index of the string inside obj doesn't exist then set it equal to 1
+  if (!obj[str[0]]) {
     obj[str[0]] = 1;
   } else {
+    //else set it to keep adding 1 as long as the condition is true
     obj[str[0]] += 1;
   }
+  //return our obj with each letter tallied
   return obj;
 };
 
@@ -403,11 +437,15 @@ var letterTally = function(str, obj = {}) {
 // Example: compress([1, 2, 2, 3, 4, 4, 5, 5, 5]) // [1, 2, 3, 4, 5]
 // Example: compress([1, 2, 2, 3, 4, 4, 2, 5, 5, 5, 4, 4]) // [1, 2, 3, 4, 2, 5, 4]
 var compress = function(list) {
+  //if the list has no length then return the list
   if(list.length === 0){
     return list;
   }
+  //assign new variable to hold recur call with first index sliced off list
   var rest = compress(list.slice(1));
+  //if the 0 index of list is not the zero index of new variable
   if (list[0] !== rest[0]) {
+    //push that value into the front of the variable
     rest.unshift(list[0]);
   }
   return rest;
@@ -423,11 +461,14 @@ var augmentElements = function(array, aug) {
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
 var minimizeZeroes = function(array) {
+  //if array has no length then just return the array with any value it has placed inside
   if(array.length === 0){
     return array;
   }
+  //new variable to hold recur call with first index sliced
   var list = minimizeZeroes(array.slice(1));
   if ((array[0] === 0 ^ list[0] === 0) || array[0] !== 0) {
+    //add zero index of array to front of new variable
     list.unshift(array[0]);
   }
   return list;  
@@ -438,34 +479,48 @@ var minimizeZeroes = function(array) {
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
 var alternateSign = function(array) {
+  //if array has no length return empty array
   if (array.length === 0){
      return [];
   }
-  var list = alternateSign(array.slice(0, array.length-1));
+  //assign recur call to new var with zero index through end of array sliced
+  var output = alternateSign(array.slice(0, array.length - 1));
+  //assign new var value of whole array
   var lng = array.length;
+  //if var remainder 2 is zero(if var is even)
   if (lng %2 === 0) {
+    //if array ending is positive
     if (array[lng - 1] > 0) {
-      array[lng-1] = -array[lng-1];
+      //set pos array ending to neg array ending
+      array[lng - 1] = -array[lng - 1];
     }
   } else {
+    //if array ending is neg
     if (array[lng - 1] < 0) {
+      //still set pos ending equal to neg ending
       array[lng - 1] = -array[lng - 1];
     }
   }
-  list.push(array[lng - 1]);
-  return list;
+  //push array ending into var output
+  output.push(array[lng - 1]);
+  return output;
 };
 
 // 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
 var numToText = function(str) {
+  //if str has no length then return empty string
   if (str.length === 0){
      return '';
   }
-  var tempStr = numToText(str.substring(0, str.length - 1));
+  //temp var to hold recur call with zero through end of string sliced
+  var tempStr = numToText(str.slice(0, str.length - 1));
+  //var to hold replacement value
   var replace;
+  //switch case for str[string last value]
   switch (str[str.length - 1]) {
+    //replace each string with it's corresponding number value
     case '1': replace = 'one';
       break;
     case '2': replace = 'two';
@@ -484,9 +539,11 @@ var numToText = function(str) {
       break;
     case '9': replace = 'nine';
       break;
+      //default to last value in string
     default: replace = str[str.length - 1];
       break;
   }
+  //return each value sliced with it's replacement
   return tempStr + replace;
 };
 
