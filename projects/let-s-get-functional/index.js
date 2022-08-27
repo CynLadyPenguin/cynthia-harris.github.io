@@ -69,17 +69,11 @@ var youngestCustomer = function(array){
 
 
 var averageBalance = function(array){
-    let total = 0;
-    let sum = 0;
-    let balance = _.filter(array, function(customer){
-        for(var i = 0; i < customer.balance.length; i++){
-            sum += i;
-            total = sum / 8;
-        }
-        return total; 
-    })
-    return balance;
-};
+    let sum = _.reduce(array, function(acc, current) {
+      return acc += Number(current.balance.replace(/\$|,/g, ""));
+    }, 0);
+    return sum / array.length;
+  }
 
 var firstLetterCount;
 

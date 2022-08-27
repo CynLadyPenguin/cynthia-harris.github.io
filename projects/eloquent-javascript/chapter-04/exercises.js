@@ -66,11 +66,11 @@ function reverseArrayInPlace(array) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function arrayToList(array) {
-  let list = null;
+  let rest = null;
   for (let i = array.length - 1; i >= 0; i--){
-    list = {value: array[i], rest: list};
+    rest = {value: array[i], rest: rest};
   }
-  return list;
+  return rest;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
