@@ -66,8 +66,6 @@ var youngestCustomer = function(array){
   return youngest.name;  
 };
 
-
-
 var averageBalance = function(array){
     let sum = _.reduce(array, function(acc, current) {
       return acc += Number(current.balance.replace(/\$|,/g, ""));
@@ -75,15 +73,45 @@ var averageBalance = function(array){
     return sum / array.length;
   }
 
-var firstLetterCount;
+var firstLetterCount = function(array, letter){
+  let firstLetter = _.reduce(array, function(acc, current){
+    if(current.name.charAt(0).toUpperCase() === letter.toUpperCase()){
+      return acc += 1;
+    }
+    return acc;
+  }, 0);
+  return firstLetter;
+};
 
-var friendFirstLetterCount;
+var friendFirstLetterCount = function(array, customer, letter){
+  var friendFLC = _.reduce(array, function(acc, current){
+      if(current.name === customer.name){
+        for(var j = 0; j < current.friends.length; j++){
+          if(current.friends[j].name.charAt(0).toUpperCase() === letter.toUpperCase()){
+            return acc += 1;
+          }
+        }
+      }
+    return acc;
+  }, 0)
+  return friendFLC;
+};
 
 var friendsCount;
 
 var topThreeTags;
 
-var genderCount;
+var genderCount = function(array){
+  let genderBin = _.reduce(array, function(acc, current){
+    if(acc[current.gender]){
+      acc[current.gender] += 1;
+    } else {
+      acc[current.gender] = 1;
+    }
+    return acc;
+  }, {});
+  return genderBin;
+};
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
