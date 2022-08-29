@@ -85,10 +85,10 @@ var firstLetterCount = function(array, letter){
 
 var friendFirstLetterCount = function(array, customer, letter){
   var friendFLC = _.reduce(array, function(acc, current){
-      if(current.name === customer.name){
+      if(current.name === customer){
         for(var j = 0; j < current.friends.length; j++){
           if(current.friends[j].name.charAt(0).toUpperCase() === letter.toUpperCase()){
-            return acc += 1;
+            acc += 1;
           }
         }
       }
