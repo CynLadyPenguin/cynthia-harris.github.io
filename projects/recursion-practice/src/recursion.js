@@ -71,33 +71,20 @@ var sumBelow = function(n, sum = 0) {
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
-var range = function(x, y, ) {
-  //create new var assigned value of true if is included
-  var isIncluded = true;
-  //if y is lower than x
+var range = function(x, y) {
+  var isInc = true;
   if (x > y) {
-    //temporary variable to hold x and reassign x to y 
     var temp = x;
-    x = y; 
-    //reassign y to temp variable and assign isInc to false
+    x = y;
     y = temp;
-    isIncluded = false;
+    isInc = false;
   }
-  //if x and y are equal just return an empty array
-  if (x === y){
-     return [];
-     //if x is one digit away from y then return an empty array
-  }else if (x + 1 === y){
-   return [];
-  }else {
-    //assign variable rest to the range of x and y - 1
-  var rest = range(x, y - 1);
-  //push the value of y - 1 into rest
-  rest.push(y - 1);
-  //if isInc equals rest(value of y - 1) return true, otherwise (if false) return rest reversed
-  return isIncluded ? rest : rest.reverse();
-  } 
-};
+  if (x === y) return [];
+  if (x+1 === y) return [];
+  var res = range(x, y-1);
+  res.push(y-1);
+  return isInc ? res : res.reverse();
+}
 
 // 7. Compute the exponent of a number.
 // The exponent of a number says how many times the base number is used as a factor.

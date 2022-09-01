@@ -97,9 +97,45 @@ var friendFirstLetterCount = function(array, customer, letter){
   return friendFLC;
 };
 
-var friendsCount;
+var friendsCount = function(array, name){
+  let friends = _.reduce(array, function(acc, current){
+    for(var i = 0; i < current.friends.length; i++){
+      if(current.friends[i].name === name){
+        acc.push(current.name);
+    }
+  }
+  return acc;
+  }, [])
+  return friends;
+};
 
-var topThreeTags;
+var topThreeTags = function(array){
+ var top3 = [];
+ var allDeezTags = [];
+ for(var i = 0; i < array.length; i++){
+  for(var j = 0; j < array[i].tags.length; j++){
+    allDeezTags.push(array[i].tags[j]);
+  }
+ }
+ var object = {};
+
+ for(var t = 0; t < allDeezTags.length; t++){
+  if(object[allDeezTags[t]]){
+    object[allDeezTags[t]] += 1;
+  } else{
+    object[allDeezTags[t]] = 1;
+  }
+ }
+
+ var array = Object.entries(object);
+ array.sort(function(a, b){
+  return b[1] - a[1];
+ });
+ for(var y = 0; y < 3; y++){
+  top3.push(array[y][0]);
+ }
+ return top3;
+};
 
 var genderCount = function(array){
   let genderBin = _.reduce(array, function(acc, current){

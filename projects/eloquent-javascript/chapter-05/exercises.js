@@ -2,10 +2,12 @@
 // flatten /////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
+
+
 function flatten(array){
   for(let i = 0; i < array.length; i++){
     if(array[i] instanceof Array){
-      Array.prototype.splice.apply(array,[i,1].concat(array[i]));
+      array.splice.apply(array,[i,1].concat(array[i]));
     }
   }
   return array;
@@ -37,42 +39,28 @@ function every(array, test) {
 // /////////////////////////////////////////////////////////////////////////////
 // dominantDirection ///////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
-function characterScript(code) {
-  for (let script of SCRIPTS) {
-    if (script.ranges.some(([from, to]) => {
-      return code >= from && code < to;
-    })) {
-      return script;
-    }
-  }
-  return null;
-}
-
-function countBy(items, groupName) {
-  let counts = [];
-  for (let item of items) {
-    let name = groupName(item);
-    let known = counts.findIndex(c => c.name === name);
-    if (known == -1) {
-      counts.push({name, count: 1});
-    } else {
-      counts[known].count++;
-    }
-  }
-  return counts;
-}
-
-function dominantDirection(text) {
-  let scripts = countBy(text, char => {
-    let script = characterScript(char.codePointAt(0));
-    return script ? script.direction : "none";
-  }).filter(({name}) => name !== "none");
- 
-  if (scripts.length === 0) return "ltr";
+function dominantDirection(string){
+  let ltr = [];
+  let rtl = [];
   
-  return scripts.reduce((a, b) => a.count > b.count ? a : b).name;
-}
+  for(let i = 0; i < string.length; i++){
+    let scriptName = characterScript(string.charCodeAt(i)); //should return null or {...}
 
+    if(scriptName !== null){
+      if(scriptName.direction === "ltr"){
+        ltr.push(scriptName);
+      } else {
+        rtl.push(scriptName);
+      }
+    }
+  }
+
+  if(ltr.length > rtl.length){
+    return "ltr";
+  } else {
+    return "rtl";
+  }
+}
 // /////////////////////////////////////////////////////////////////////////////
 //  //////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
