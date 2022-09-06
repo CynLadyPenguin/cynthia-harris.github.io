@@ -63,21 +63,21 @@
  *   function cannot access the child variables. Both can access the global scope variables.
  *   
  * Example: 
- * //Parent Function => function sum(number){
- *                      return number + function(letter){ //<= child function
- *                          return letter + number;
- *                      }
- *                      }
+ *   var witcherCharName = "Geralt";  //this variable has been declared in the global scope
+ *   function nameChange(){  //this function can access variable declared in the global scope
+ *      return witcherCharName = "Triss";  //this func changes the outer scope(global scope in this case) variable value to "Triss".
+ *      }  //this func will not change the global scope variable value unless the variable is called with the function.
  * 
  *   6. CLOSURES
  *   A closure is the combination of a function enclosed together with references to its surrounding state called the LEXICAL environment. A closure gives you access to 
  *   an outer function's scope from an inner function. In JavaScript, closures are created every time you create a function at the time of creation.
  * 
  * Example: 
- *   function ballerShotCaller() {
- *      var name = "Doug"; // name is a local variable created by ballerShotCaller
- *          function displayName() {  // displayName() is the inner function, a closure
- *              console.log(name); //  it can use variables declared in the parent function
+ *   function ballerShotCaller() {  //this is the parent function to the child function displayName
+ *      var name = "Doug"; // name is a local variable created by ballerShotCaller. It can be accessed by the child function
+ *          function displayName() {  // displayName() is the inner function or a child function
+ *              console.log(name); //the inner function is holding on to the variable name from it's parent function. This is an example of closure. In this case, even when
+ *  the parent function has been executed, the variable name can still be utilized because of the child function.
  *          }
  *      displayName();
  *       }
