@@ -10,6 +10,12 @@
  * If else if conditionals are used to set the computer to comb through certain conditions and return the true one. The syntax is if (condition1){}else if(condition2){}else{}
  * In between the conditions, you would set the computer to do a certain action if the condition is true. The control flow will only look for the first true condition and stop
  * immediately after implementing the action. This is why it's important to set up conditionals in a way that creates best possible flow for your code. 
+ * The first part of an If/else if conditional is the if statement. The if statement is a statement that produces a true/false boolean condition.
+ * 
+ * Example: 
+ * if(x === x){  //in this if statement we are looking to evaluate if x is strictly equal to x. In this case, the if statement should return true if the statement is true.
+ * return true;  //this if statement will return true because the letter x is strictly equal to the letter x.
+ * }
  * 
  * Example:
  if("Array" === "array"){
