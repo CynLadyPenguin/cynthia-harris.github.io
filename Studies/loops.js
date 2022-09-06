@@ -6,8 +6,13 @@
  * 
  * 0. FOR LOOP 
  * Contains 3 parts; initialization, stop condition, and updation (incremental/decremental)
+ * 
+ * INITIALIZATION: this is the starting condition that tells the loop where to start/initiates the variable(in the below case the variable is i)
+ * STOP CONDITION: this condition tells the loop when to stop by using booleans. Typically, when the condition hits a false condition, the loop will stop. 
+ * UPDATION: this last part defines how to update the counting variable. It could be incremental ++ or decremental --.
+ * 
  * Example: 
- * for (var i = 0; i < array.length; i++){} //loops over an array
+ * for (var i = 0; i < array.length; i++){} //loops over the length of an array
  * 
  * 
  * 1. WHILE

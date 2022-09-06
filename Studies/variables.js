@@ -13,10 +13,12 @@
  * If there is only one word then it should be lowercase. The variable value should always end in a semicolon. If there's no value, put the semicolon behind the name of the variable.
  * These are the steps to declaring and assigning a variable:
  * 
- *  var 
- *  var uniqueName
- *  var uniqueName =
- *  var uniqueName = true; //This declared variable has an assigned value of true. If logged to the console (console.log(uniqueName)) the return will be the word "true".
+ *  DECLARATION:
+ *      var gingerbread; //this variable is declared, but not assigned a value
+ * 
+ *  ASSIGNMENT:
+ *      gingerbread = "house"; //this variable, declared above, has now been assigned the value of a string "house". 
+ * 
  * 
  * 1. VAR, LET, CONST
  * 
